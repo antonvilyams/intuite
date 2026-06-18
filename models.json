@@ -1,27 +1,27 @@
 [
   {
     "id": "1",
-    "name": "Anna",
-    "photo_url": "images/models/model-1.svg"
+    "name": "Sonya",
+    "photo_url": "images/models/sonya.jpg"
   },
   {
     "id": "2",
-    "name": "Sofia",
-    "photo_url": "images/models/model-2.svg"
+    "name": "Katya",
+    "photo_url": "images/models/katya.jpg"
   },
   {
     "id": "3",
-    "name": "Emma",
-    "photo_url": "images/models/model-3.svg"
+    "name": "Rochas",
+    "photo_url": "images/models/rochas.jpg"
   },
   {
     "id": "4",
-    "name": "Luna",
-    "photo_url": "images/models/model-4.svg"
+    "name": "Besha",
+    "photo_url": "images/models/bessie.jpg"
   },
   {
     "id": "5",
-    "name": "Mia",
+    "name": "Marina",
     "photo_url": "images/models/model-5.svg"
   }
 ]
