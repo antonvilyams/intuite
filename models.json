@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "name": "Anna",
+    "photo_url": "images/models/model-1.svg"
+  },
+  {
+    "id": "2",
+    "name": "Sofia",
+    "photo_url": "images/models/model-2.svg"
+  },
+  {
+    "id": "3",
+    "name": "Emma",
+    "photo_url": "images/models/model-3.svg"
+  },
+  {
+    "id": "4",
+    "name": "Luna",
+    "photo_url": "images/models/model-4.svg"
+  },
+  {
+    "id": "5",
+    "name": "Mia",
+    "photo_url": "images/models/model-5.svg"
+  }
+]

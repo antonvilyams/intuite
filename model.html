@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intuite — Model</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Intuite — home">
+        <picture>
+          <source srcset="images/logo@3x.png" type="image/png" />
+          <img
+            class="logo__img"
+            src="images/logo@3x.svg"
+            width="168"
+            height="56"
+            alt="Intuite"
+          />
+        </picture>
+      </a>
+    </header>
+
+    <main class="model-page">
+      <div id="model-content" class="model-page__content" aria-live="polite">
+        <p class="model-page__loading">Loading…</p>
+      </div>
+    </main>
+
+    <script src="js/model.js"></script>
+  </body>
+</html>
