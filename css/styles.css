@@ -176,7 +176,26 @@ img {
 .model-page__name {
   font-size: clamp(1.25rem, 3vw, 1.75rem);
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.model-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 2rem;
+  max-width: 360px;
+  margin: 0 auto 2rem;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.model-info__item {
+  margin: 0;
+}
+
+.model-info__label {
+  font-weight: 700;
 }
 
 .model-page__placeholder {
