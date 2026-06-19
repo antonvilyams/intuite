@@ -17,21 +17,61 @@
   {
     "id": "2",
     "name": "Katya",
-    "photo_url": "images/models/katya.jpg"
+    "photo_url": "images/models/katya.jpg",
+    "info": {
+      "height": "5' 8",
+      "bust": "32",
+      "cup": "B",
+      "waist": "23",
+      "hip": "34",
+      "shoe": "8",
+      "hair": "Black",
+      "eyes": "Blue"
+    }
   },
   {
     "id": "3",
     "name": "Rochas",
-    "photo_url": "images/models/rochas.jpg"
+    "photo_url": "images/models/rochas.jpg",
+    "info": {
+      "height": "5' 9",
+      "bust": "31",
+      "cup": "B",
+      "waist": "23",
+      "hip": "33",
+      "shoe": "8.5",
+      "hair": "Blonde",
+      "eyes": "Brown"
+    }
   },
   {
     "id": "4",
     "name": "Besha",
-    "photo_url": "images/models/besha.jpg"
+    "photo_url": "images/models/besha.jpg",
+    "info": {
+      "height": "5' 5",
+      "bust": "32",
+      "cup": "B",
+      "waist": "24",
+      "hip": "34",
+      "shoe": "6.5",
+      "hair": "Blonde",
+      "eyes": "Brown"
+    }
   },
   {
     "id": "5",
     "name": "Maria",
-    "photo_url": "images/models/maria.jpg"
+    "photo_url": "images/models/maria.jpg",
+    "info": {
+      "height": "5' 8",
+      "bust": "33",
+      "cup": "B",
+      "waist": "24",
+      "hip": "35",
+      "shoe": "8",
+      "hair": "Dark Brown",
+      "eyes": "Brown"
+    }
   }
 ]
