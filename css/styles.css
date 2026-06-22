@@ -83,10 +83,12 @@ img {
 
 .site-footer__logo-img {
   display: block;
-  width: var(--footer-logo-width);
-  height: var(--footer-logo-height);
-  max-width: none;
-  max-height: none;
+  width: var(--footer-logo-width) !important;
+  min-width: var(--footer-logo-width);
+  max-width: var(--footer-logo-width);
+  height: var(--footer-logo-height) !important;
+  min-height: var(--footer-logo-height);
+  max-height: var(--footer-logo-height);
   object-fit: fill;
   flex-shrink: 0;
 }
@@ -276,7 +278,8 @@ img {
 }
 
 .site-footer__inner {
-  max-width: 1200px;
+  width: fit-content;
+  max-width: min(100%, 1200px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -307,6 +310,7 @@ img {
 
 @media (min-width: 768px) {
   .site-footer__inner {
+    width: auto;
     flex-direction: row;
     align-items: center;
     justify-content: center;
