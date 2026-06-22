@@ -271,11 +271,27 @@ img {
 
 .site-footer__logo {
   display: block;
+  overflow: hidden;
   flex: 0 0 auto;
-  width: var(--footer-logo-width);
-  height: var(--footer-logo-height);
-  background: url("../images/logo@3x.png") no-repeat center /
-    var(--footer-logo-width) var(--footer-logo-height);
+  width: 142px;
+  height: 62.56px;
+}
+
+.site-footer__logo-scaler {
+  display: block;
+  width: 168px;
+  height: 56px;
+  transform: scale(0.845238095, 1.117142857);
+  transform-origin: top left;
+}
+
+.site-footer__logo-img {
+  display: block;
+  width: 168px;
+  height: 56px;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
 }
 
 .site-footer__text {
