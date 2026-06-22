@@ -271,27 +271,18 @@ img {
 
 .site-footer__logo {
   display: block;
-  overflow: hidden;
-  flex: 0 0 auto;
+  flex: 0 0 142px;
   width: 142px;
   height: 62.56px;
-}
-
-.site-footer__logo-scaler {
-  display: block;
-  width: 168px;
-  height: 56px;
-  transform: scale(0.845238095, 1.117142857);
-  transform-origin: top left;
+  line-height: 0;
 }
 
 .site-footer__logo-img {
   display: block;
-  width: 168px;
-  height: 56px;
-  max-width: none;
-  max-height: none;
-  object-fit: contain;
+  width: 142px;
+  height: 62.56px;
+  max-width: 142px;
+  max-height: 62.56px;
 }
 
 .site-footer__text {
