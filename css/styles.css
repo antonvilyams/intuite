@@ -52,6 +52,10 @@ a {
 
 img {
   display: block;
+}
+
+.gallery__item img,
+.model-page__photo img {
   max-width: 100%;
   height: auto;
 }
@@ -77,11 +81,20 @@ img {
   object-fit: contain;
 }
 
-.logo__img--footer {
+.site-footer__logo-img {
+  display: block;
   width: var(--footer-logo-width);
   height: var(--footer-logo-height);
   max-width: none;
   max-height: none;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.site-footer__logo picture {
+  display: block;
+  width: var(--footer-logo-width);
+  height: var(--footer-logo-height);
   flex-shrink: 0;
 }
 
@@ -273,8 +286,11 @@ img {
 }
 
 .site-footer__logo {
+  display: inline-flex;
   flex-shrink: 0;
   line-height: 0;
+  width: var(--footer-logo-width);
+  height: var(--footer-logo-height);
 }
 
 .site-footer__text {
