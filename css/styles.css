@@ -81,25 +81,6 @@ img {
   object-fit: contain;
 }
 
-.site-footer__logo-img {
-  display: block;
-  width: var(--footer-logo-width) !important;
-  min-width: var(--footer-logo-width);
-  max-width: var(--footer-logo-width);
-  height: var(--footer-logo-height) !important;
-  min-height: var(--footer-logo-height);
-  max-height: var(--footer-logo-height);
-  object-fit: fill;
-  flex-shrink: 0;
-}
-
-.site-footer__logo picture {
-  display: block;
-  width: var(--footer-logo-width);
-  height: var(--footer-logo-height);
-  flex-shrink: 0;
-}
-
 /* ── Gallery (mobile-first) ── */
 
 .gallery {
@@ -289,11 +270,12 @@ img {
 }
 
 .site-footer__logo {
-  display: inline-flex;
-  flex-shrink: 0;
-  line-height: 0;
+  display: block;
+  flex: 0 0 auto;
   width: var(--footer-logo-width);
   height: var(--footer-logo-height);
+  background: url("../images/logo@3x.png") no-repeat center /
+    var(--footer-logo-width) var(--footer-logo-height);
 }
 
 .site-footer__text {
