@@ -68,16 +68,11 @@
     }
   }
 
-  const CONTACT_TRANSITION_MS = 400;
-
   function showContactSuccess(section, formWrap, successEl) {
     section.classList.add("contact--sent");
     formWrap.setAttribute("aria-hidden", "true");
+    formWrap.inert = true;
     successEl.setAttribute("aria-hidden", "false");
-
-    window.setTimeout(() => {
-      formWrap.hidden = true;
-    }, CONTACT_TRANSITION_MS);
   }
 
   function initContactForm() {
