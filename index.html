@@ -30,6 +30,74 @@
 
     <main>
       <div id="gallery" class="gallery" aria-live="polite"></div>
+
+      <section class="contact" id="contact-section">
+        <div class="contact__stage">
+          <div class="contact__form-wrap" id="contact-form-wrap">
+            <h2 id="contact-heading" class="contact__heading">Contact Us</h2>
+            <form id="contact-form" class="contact__form" novalidate>
+              <p class="contact__field">
+                <label class="contact__label" for="contact-name">Name</label>
+                <input
+                  class="contact__input"
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  autocomplete="name"
+                  required
+                />
+              </p>
+              <p class="contact__field">
+                <label class="contact__label" for="contact-email">Email</label>
+                <input
+                  class="contact__input"
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+              </p>
+              <p class="contact__field">
+                <label class="contact__label" for="contact-message">Message</label>
+                <textarea
+                  class="contact__input contact__input--textarea"
+                  id="contact-message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </p>
+              <input
+                type="text"
+                name="_honey"
+                class="contact__honeypot"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              />
+              <p class="contact__actions">
+                <button class="contact__submit" type="submit">Send</button>
+              </p>
+              <p
+                id="contact-status"
+                class="contact__status"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+          </div>
+          <p
+            id="contact-success"
+            class="contact__success"
+            role="status"
+            aria-live="polite"
+            aria-hidden="true"
+          >
+            Thank you. Your message has been sent.
+          </p>
+        </div>
+      </section>
     </main>
 
     <script src="js/app.js"></script>

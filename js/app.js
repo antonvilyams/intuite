@@ -1,5 +1,6 @@
 (function () {
   const gallery = document.getElementById("gallery");
+  const CONTACT_EMAIL = "anton.williams@gmail.com";
 
   function chunkIntoRows(models) {
     const rows = [];
@@ -67,6 +68,82 @@
     }
   }
 
+  const CONTACT_TRANSITION_MS = 400;
+
+  function showContactSuccess(section, formWrap, successEl) {
+    section.classList.add("contact--sent");
+    formWrap.setAttribute("aria-hidden", "true");
+    successEl.setAttribute("aria-hidden", "false");
+
+    window.setTimeout(() => {
+      formWrap.hidden = true;
+    }, CONTACT_TRANSITION_MS);
+  }
+
+  function initContactForm() {
+    const section = document.getElementById("contact-section");
+    const formWrap = document.getElementById("contact-form-wrap");
+    const form = document.getElementById("contact-form");
+    const statusEl = document.getElementById("contact-status");
+    const successEl = document.getElementById("contact-success");
+    if (!section || !formWrap || !form || !statusEl || !successEl) return;
+
+    const submitBtn = form.querySelector(".contact__submit");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      const honey = form._honey.value;
+
+      if (honey) return;
+
+      submitBtn.disabled = true;
+      statusEl.textContent = "Sending…";
+      statusEl.className = "contact__status contact__status--pending";
+
+      try {
+        const response = await fetch(
+          `https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_EMAIL)}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              message,
+              _subject: `Intuite — message from ${name}`,
+              _replyto: email,
+              _template: "table",
+            }),
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "Request failed");
+        }
+
+        statusEl.textContent = "";
+        statusEl.className = "contact__status";
+        showContactSuccess(section, formWrap, successEl);
+      } catch (err) {
+        statusEl.textContent = "Something went wrong. Please try again.";
+        statusEl.className = "contact__status contact__status--error";
+        submitBtn.disabled = false;
+        console.error(err);
+      }
+    });
+  }
+
   async function init() {
     try {
       const response = await fetch("models.json");
@@ -93,5 +170,6 @@
     }
   }
 
+  initContactForm();
   init();
 })();
