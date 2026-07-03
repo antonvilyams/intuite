@@ -114,6 +114,7 @@
               name,
               email,
               message,
+              _honey: honey,
               _subject: `Intuite — message from ${name}`,
               _replyto: email,
               _template: "table",
