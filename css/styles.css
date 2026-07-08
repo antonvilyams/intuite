@@ -436,7 +436,7 @@ img {
 .contact-fab {
   position: fixed;
   right: var(--contact-fab-right);
-  bottom: var(--contact-fab-bottom);
+  top: calc(clamp(0.85rem, 2vw, 1.5rem) + ((var(--logo-height) - 28px) / 2));
   z-index: 120;
   display: inline-flex;
   align-items: center;
@@ -480,6 +480,11 @@ img {
 }
 
 @media (min-width: 768px) {
+  .contact-fab {
+    top: auto;
+    bottom: var(--contact-fab-bottom);
+  }
+
   .brands {
     padding-inline: clamp(2rem, 6vw, 5rem);
   }
