@@ -289,7 +289,7 @@ img {
   margin: 0 auto;
   padding: var(--header-gallery-gap) 1.25rem clamp(4rem, 10vw, 6rem);
   text-align: center;
-  scroll-margin-top: clamp(6rem, 14vw, 8rem);
+  scroll-margin-top: clamp(6.75rem, 16vw, 9rem);
 }
 
 .contact__stage {
