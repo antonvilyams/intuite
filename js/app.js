@@ -75,6 +75,37 @@
     successEl.setAttribute("aria-hidden", "false");
   }
 
+  function initContactFab() {
+    const fab = document.getElementById("contact-fab");
+    const contactSection = document.getElementById("contact-section");
+    if (!fab || !contactSection) return;
+
+    const setFabHidden = (isHidden) => {
+      fab.classList.toggle("is-hidden", isHidden);
+      fab.setAttribute("aria-hidden", String(isHidden));
+    };
+
+    fab.addEventListener("click", () => {
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    if (!("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setFabHidden(entry.isIntersecting);
+      },
+      {
+        threshold: 0.05,
+      }
+    );
+
+    observer.observe(contactSection);
+  }
+
   function initContactForm() {
     const section = document.getElementById("contact-section");
     const formWrap = document.getElementById("contact-form-wrap");
@@ -166,6 +197,7 @@
     }
   }
 
+  initContactFab();
   initContactForm();
   init();
 })();

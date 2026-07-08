@@ -20,6 +20,8 @@
   --offset-sm: clamp(2rem, 5vw, 4rem);
   --offset-md: clamp(3rem, 8vw, 6rem);
   --offset-lg: clamp(4rem, 10vw, 8rem);
+  --contact-fab-bottom: 18px;
+  --contact-fab-right: 24px;
 }
 
 html {
@@ -287,6 +289,7 @@ img {
   margin: 0 auto;
   padding: var(--header-gallery-gap) 1.25rem clamp(4rem, 10vw, 6rem);
   text-align: center;
+  scroll-margin-top: clamp(5rem, 12vw, 7rem);
 }
 
 .contact__stage {
@@ -428,6 +431,52 @@ img {
 
 .contact__status--error {
   color: var(--color-text);
+}
+
+.contact-fab {
+  position: fixed;
+  right: var(--contact-fab-right);
+  bottom: var(--contact-fab-bottom);
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 33px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.contact-fab:hover {
+  opacity: 0.65;
+}
+
+.contact-fab:focus-visible {
+  outline: 1px solid var(--color-text);
+  outline-offset: 8px;
+}
+
+.contact-fab.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+}
+
+.contact-fab__icon {
+  display: block;
+  width: 48px;
+  height: 33px;
+  object-fit: contain;
 }
 
 @media (min-width: 768px) {
