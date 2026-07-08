@@ -244,7 +244,7 @@ img {
 .brands {
   max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(3rem, 8vw, 5rem) 1.25rem clamp(2rem, 6vw, 3.5rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem) 1.25rem clamp(1rem, 3vw, 1.75rem);
 }
 
 .brands__heading {
