@@ -13,6 +13,8 @@
   --font-logo: "Courier Prime", "Courier New", monospace;
   --logo-width: 168px;
   --logo-height: 56px;
+  --header-padding-y: clamp(0.85rem, 2vw, 1.5rem);
+  --header-height: calc(var(--logo-height) + var(--header-padding-y) * 2);
   --header-gallery-gap: clamp(1rem, 2.5vw, 1.75rem);
   --gallery-gap: clamp(2rem, 5vw, 4rem);
   --photo-width-desktop: clamp(160px, 18vw, 240px);
@@ -27,6 +29,7 @@
 html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -59,7 +62,7 @@ img {
   z-index: 100;
   display: flex;
   justify-content: center;
-  padding: clamp(0.85rem, 2vw, 1.5rem) 1.5rem;
+  padding: var(--header-padding-y) 1.5rem;
   background: var(--color-bg);
 }
 
@@ -289,7 +292,7 @@ img {
   margin: 0 auto;
   padding: var(--header-gallery-gap) 1.25rem clamp(4rem, 10vw, 6rem);
   text-align: center;
-  scroll-margin-top: clamp(3.75rem, 8vw, 5rem);
+  scroll-margin-top: var(--header-height);
 }
 
 .contact__stage {
@@ -436,7 +439,7 @@ img {
 .contact-fab {
   position: fixed;
   right: var(--contact-fab-right);
-  top: calc(clamp(0.85rem, 2vw, 1.5rem) + ((var(--logo-height) - 28px) / 2));
+  top: calc(var(--header-padding-y) + ((var(--logo-height) - 28px) / 2));
   z-index: 120;
   display: inline-flex;
   align-items: center;

@@ -86,9 +86,16 @@
     };
 
     fab.addEventListener("click", () => {
-      contactSection.scrollIntoView({
+      const header = document.querySelector(".site-header");
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      const top =
+        window.scrollY +
+        contactSection.getBoundingClientRect().top -
+        headerHeight;
+
+      window.scrollTo({
+        top: Math.max(0, top),
         behavior: "smooth",
-        block: "start",
       });
     });
 
