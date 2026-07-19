@@ -290,7 +290,7 @@ img {
 .contact {
   max-width: 480px;
   margin: 0 auto;
-  padding: var(--header-gallery-gap) 1.25rem clamp(4rem, 10vw, 6rem);
+  padding: var(--header-gallery-gap) 1.25rem clamp(2rem, 5vw, 3rem);
   text-align: center;
   scroll-margin-top: var(--header-height);
 }
@@ -487,7 +487,7 @@ img {
 /* ── Footer ── */
 
 .site-footer {
-  padding: clamp(2rem, 5vw, 3rem) 1.25rem clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1rem, 2.5vw, 1.5rem) 1.25rem clamp(2.5rem, 6vw, 4rem);
   text-align: center;
 }
 
