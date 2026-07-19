@@ -474,8 +474,8 @@ img {
 
 .contact-fab__icon {
   display: block;
-  width: 40px;
-  height: 28px;
+  width: 28px;
+  height: 20px;
   object-fit: contain;
 }
 
@@ -483,6 +483,11 @@ img {
   .contact-fab {
     top: auto;
     bottom: var(--contact-fab-bottom);
+  }
+
+  .contact-fab__icon {
+    width: 40px;
+    height: 28px;
   }
 
   .brands {
