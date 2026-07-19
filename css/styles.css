@@ -484,7 +484,26 @@ img {
   object-fit: contain;
 }
 
+/* ── Footer ── */
+
+.site-footer {
+  padding: clamp(2rem, 5vw, 3rem) 1.25rem clamp(2.5rem, 6vw, 4rem);
+  text-align: center;
+}
+
+.site-footer__text {
+  max-width: 36rem;
+  margin: 0 auto;
+  font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
 @media (min-width: 768px) {
+  .site-footer {
+    padding-inline: clamp(2rem, 6vw, 5rem);
+  }
+
   .contact-fab {
     top: auto;
     bottom: var(--contact-fab-bottom);
