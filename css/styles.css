@@ -61,9 +61,17 @@ img {
   top: 0;
   z-index: 100;
   display: flex;
-  justify-content: center;
-  padding: var(--header-padding-y) 1.5rem;
+  justify-content: flex-start;
+  padding: var(--header-padding-y)
+    calc(var(--contact-fab-right) + (40px - 28px) / 2);
   background: var(--color-bg);
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    justify-content: center;
+    padding-inline: 1.5rem;
+  }
 }
 
 .logo {
