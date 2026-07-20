@@ -1,6 +1,12 @@
 (function () {
   const gallery = document.getElementById("gallery");
   const CONTACT_EMAIL = "anton.williams@gmail.com";
+  /** Placeholder count while models.json loads (matches current roster). */
+  const SKELETON_COUNT = 5;
+
+  let modelsCache = null;
+  let galleryLoading = true;
+  let resizeTimer;
 
   function chunkIntoRows(models) {
     const rows = [];
@@ -15,6 +21,55 @@
     }
 
     return rows;
+  }
+
+  function createSkeletonItem(mobileAlign) {
+    const item = document.createElement("div");
+    item.className = `gallery__item gallery__item--skeleton gallery__item--${mobileAlign}`;
+    item.setAttribute("aria-hidden", "true");
+
+    const block = document.createElement("span");
+    block.className = "gallery__skeleton";
+    item.appendChild(block);
+
+    return item;
+  }
+
+  function renderSkeletonMobile(count) {
+    gallery.innerHTML = "";
+    gallery.className = "gallery gallery--loading";
+
+    for (let i = 0; i < count; i++) {
+      const align = i % 2 === 0 ? "left" : "right";
+      gallery.appendChild(createSkeletonItem(align));
+    }
+  }
+
+  function renderSkeletonDesktop(count) {
+    const placeholderModels = Array.from({ length: count }, (_, i) => ({ id: i }));
+    const rows = chunkIntoRows(placeholderModels);
+    gallery.innerHTML = "";
+    gallery.className = "gallery gallery--loading";
+
+    rows.forEach((row) => {
+      const rowEl = document.createElement("div");
+      rowEl.className = `gallery__row gallery__row--${row.size}`;
+
+      row.items.forEach(() => {
+        rowEl.appendChild(createSkeletonItem("left"));
+      });
+
+      gallery.appendChild(rowEl);
+    });
+  }
+
+  function renderSkeleton(count) {
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    if (isDesktop) {
+      renderSkeletonDesktop(count);
+    } else {
+      renderSkeletonMobile(count);
+    }
   }
 
   function createModelLink(model, mobileAlign) {
@@ -60,12 +115,26 @@
   }
 
   function render(models) {
+    galleryLoading = false;
+    gallery.classList.remove("gallery--loading");
+
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     if (isDesktop) {
       renderDesktop(models);
     } else {
       renderMobile(models);
     }
+  }
+
+  function scheduleGalleryLayout() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (galleryLoading) {
+        renderSkeleton(SKELETON_COUNT);
+      } else if (modelsCache) {
+        render(modelsCache);
+      }
+    }, 150);
   }
 
   function showContactSuccess(section, formWrap, successEl) {
@@ -178,6 +247,12 @@
     });
   }
 
+  function showGalleryError(message) {
+    galleryLoading = false;
+    gallery.className = "gallery";
+    gallery.innerHTML = `<p class="model-page__error">${message}</p>`;
+  }
+
   async function init() {
     try {
       const response = await fetch("models.json");
@@ -185,26 +260,21 @@
 
       const models = await response.json();
       if (!Array.isArray(models) || models.length === 0) {
-        gallery.innerHTML =
-          '<p class="model-page__error">No models to display.</p>';
+        showGalleryError("No models to display.");
         return;
       }
 
+      modelsCache = models;
       render(models);
-
-      let resizeTimer;
-      window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => render(models), 150);
-      });
     } catch (err) {
-      gallery.innerHTML =
-        '<p class="model-page__error">Failed to load models.</p>';
+      showGalleryError("Failed to load models.");
       console.error(err);
     }
   }
 
   initContactFab();
   initContactForm();
+  window.addEventListener("resize", scheduleGalleryLayout);
+  renderSkeleton(SKELETON_COUNT);
   init();
 })();

@@ -10,6 +10,7 @@
   --color-bg: #ffffff;
   --color-text: #000000;
   --color-muted: #666666;
+  --gallery-skeleton: #e8e8e8;
   --font-logo: "Courier Prime", "Courier New", monospace;
   --logo-width: 168px;
   --logo-height: 56px;
@@ -105,6 +106,38 @@ img {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+}
+
+.gallery__item--skeleton {
+  pointer-events: none;
+}
+
+.gallery__item--skeleton:hover {
+  opacity: 1;
+}
+
+.gallery__skeleton {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--gallery-skeleton);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gallery--loading .gallery__skeleton {
+    animation: gallery-skeleton-pulse 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes gallery-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
 }
 
 /* Mobile: alternating left / right offsets */
