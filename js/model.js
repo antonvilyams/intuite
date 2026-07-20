@@ -28,6 +28,56 @@
       .replace(/"/g, "&quot;");
   }
 
+  function skeletonInfoColumn(lineCount) {
+    const lines = Array.from({ length: lineCount }, () =>
+      '<span class="model-page__skeleton model-page__skeleton--line"></span>'
+    ).join("");
+    return `<div class="model-info__column">${lines}</div>`;
+  }
+
+  function renderSkeleton() {
+    if (!content) return;
+
+    const linesPerColumn = INFO_COLUMNS.map((column) => column.length);
+    const infoHtml = linesPerColumn
+      .map((count) => skeletonInfoColumn(count))
+      .join("");
+
+    content.className = "model-page__content model-page__content--loading";
+    content.innerHTML = `
+      <div class="model-page__photo" aria-hidden="true">
+        <span class="model-page__skeleton model-page__skeleton--photo"></span>
+      </div>
+      <span class="model-page__skeleton model-page__skeleton--name" aria-hidden="true"></span>
+      <div class="model-info model-info--skeleton" aria-hidden="true">${infoHtml}</div>
+      <span class="model-page__skeleton model-page__skeleton--back" aria-hidden="true"></span>
+    `;
+  }
+
+  function showError(message) {
+    if (!content) return;
+    content.className = "model-page__content";
+    content.innerHTML = `<p class="model-page__error">${message}</p>`;
+  }
+
+  function renderModel(model) {
+    if (!content) return;
+
+    document.title = `Intuite — ${model.name}`;
+
+    const infoHtml = renderInfo(model.info);
+
+    content.className = "model-page__content";
+    content.innerHTML = `
+      <div class="model-page__photo">
+        <img src="${escapeHtml(model.photo_url)}" alt="${escapeHtml(model.name)}" />
+      </div>
+      <h1 class="model-page__name">${escapeHtml(model.name)}</h1>
+      ${infoHtml}
+      <a href="index.html" class="model-page__back">← Back</a>
+    `;
+  }
+
   function renderInfo(info) {
     if (!info || typeof info !== "object") return "";
 
@@ -58,10 +108,11 @@
     const id = getModelId();
 
     if (!id) {
-      content.innerHTML =
-        '<p class="model-page__error">Model not found.</p>';
+      showError("Model not found.");
       return;
     }
+
+    renderSkeleton();
 
     try {
       const response = await fetch("models.json");
@@ -71,26 +122,13 @@
       const model = models.find((m) => String(m.id) === String(id));
 
       if (!model) {
-        content.innerHTML =
-          '<p class="model-page__error">Model not found.</p>';
+        showError("Model not found.");
         return;
       }
 
-      document.title = `Intuite — ${model.name}`;
-
-      const infoHtml = renderInfo(model.info);
-
-      content.innerHTML = `
-        <div class="model-page__photo">
-          <img src="${escapeHtml(model.photo_url)}" alt="${escapeHtml(model.name)}" />
-        </div>
-        <h1 class="model-page__name">${escapeHtml(model.name)}</h1>
-        ${infoHtml}
-        <a href="index.html" class="model-page__back">← Back</a>
-      `;
+      renderModel(model);
     } catch (err) {
-      content.innerHTML =
-        '<p class="model-page__error">Failed to load model data.</p>';
+      showError("Failed to load model data.");
       console.error(err);
     }
   }

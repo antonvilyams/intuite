@@ -277,6 +277,48 @@ img {
   padding: 2rem 0;
 }
 
+.model-page__skeleton {
+  display: block;
+  background: var(--gallery-skeleton);
+}
+
+.model-page__skeleton--photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+}
+
+.model-page__skeleton--name {
+  width: min(10rem, 45vw);
+  height: 1.35em;
+  margin: 0 auto 1.5rem;
+}
+
+.model-info--skeleton {
+  margin-bottom: 2rem;
+}
+
+.model-page__skeleton--line {
+  height: 0.95rem;
+  margin-bottom: calc(0.95rem * 0.7);
+  max-width: 7.5rem;
+}
+
+.model-info--skeleton .model-info__column:last-child .model-page__skeleton--line {
+  max-width: 6.5rem;
+}
+
+.model-page__skeleton--back {
+  width: 4.25rem;
+  height: 0.9rem;
+  margin: 0 auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .model-page__content--loading .model-page__skeleton {
+    animation: gallery-skeleton-pulse 1.5s ease-in-out infinite;
+  }
+}
+
 /* ── Brands ── */
 
 .brands {
